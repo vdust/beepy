@@ -30,9 +30,11 @@ You'll probably need root privileges to run it. However, if you're in a real tty
 the 'beep' output method should work directly.
 
 To play some files:
+
     ./beepy [options] files...
 
 To list available output methods:
+
     ./beepy --output=list
 
 
@@ -74,6 +76,7 @@ folders that survived several hdd crashes and formatting.
 If the default speaker device doesn't exist, you can grep
 /proc/bus/input/devices for "PC Speaker" and find the handler (eventX) it is
 linked to. Then:
+
     ./beepy --evdev=/dev/input/eventX samples/mariocomplete.txt
 
 
