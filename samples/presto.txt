@@ -1,0 +1,28 @@
+; Presto for Solo Violin
+; from Sonata No. 1 in G Minor, S. 1001
+; by J.S. Bach
+
+o5l16
+gb-gdgd <b->d<b-gb-g dgd<b->d<b- gb->dgb->d gdc<b-ag f+df+a>df+
+ae-dc<b-a gdgb->dg b-ge-ce-g afd<b->df ge-c<a>ce- <d>gf+gac <g>c<b->cd<f
+c>fefg<b- fb-ab->c<e- <b->>e-de-f<a- e-<b->e-ge-g >c<g>ce-ce- <fcfafa
+>d<a>dfdf <gdgb-gb- >e-<b->e-ge-g <afa>c<a>c fcfafa <b->cdb-ab- cde-b-ab-
+de-fb-ab- e-fgb-ab- <a>ce-gfe- d<b->e-<b->f<a- gab-dca <b->dc<b-ag a>gf+ed>c
+<b-ag>fed c+b-agfe fdgdac <b->agfed ecfcg<b- a>gfedc+ d<b->e<b->f<a
+g>fedc+<b >c+<a>d<a>e<g f>d<b-ge>c <db-geca <b->gec+<a>f <g>fedc+<b
+a>dc+edf <a>edfeg <a>fegfa <b->gf+agb- c+b-agfe fdfa>df ad<l8a<l32a>gl8>c+ <l32df+>l4d.
+p2
+o4l16
+d<a>df+df+ af+a>d<a>d f+df+af+a >d<af+d<af+ def+gab- >ce-c<a>c<a
+f+df+a>dc <b->d<b-gd<b- gab->cde- fa-fdfd <bgb>dgf e-ce-g>cd
+e-c<a-fa->c d<b-ge-gb- >c<a-fdfa- <g>>c<b>cd<f c>fe-fg<b- fb-a-b->c<e-
+<b->>e-de-f<a- e-a-ga-b-d- <a->cfa-gf <b>dfa-gf cefa-gf dfb>cd<f
+e-g>cde-c a-gfe-dc gde-c<gb cfe-dc<b- a>cfcfa fa>c<a>ce-
+ce-agfe- dc<b->cde f+a>c<af+a f+cf+c<a>c <af+af+d>c <b-gb-ge>d
+c<a>c<af+>e- d<b->d<b-g>f e-ce-c<a>g f+def+ga b-dgb-ce- afd<b->df
+g<b->e-g<a>c fd<b-gb->d e-<g>ce-<fa> d<b-gegb- >c<ab-gf+a def+gab-
+>ce-dgf+b- agf+e-dc <b->e-d<b->c<a f>dc<ab-g e->c<b-gaf+ db-af+ge-
+cagef+d <b->>dc<b-ag >e-dcb-ag f+gade-c <fb>d<a-gf eg>ceg<b-
+e-a>c<gfe- dfb->df<a- g>e-<b-ge-d c>e-c<b-ag f+>d<af+dc <b->>d<b-agf ecg<b-a>g
+f+dac<b->a ge-b-dcb- af>c<e-d>c <b-g>d<fe>d c<a>e-<gf+>e- d<b->g<b-a>c <b-gf+adc
+<b->gf+agb- cagb-a>c <db-a>c<b->d <e->c<b>dce- <f+>e-dc<b-a b->dgb-gd <b-gl8dl32d>cl8f+ l32<<g>dl16b->l4g.

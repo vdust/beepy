@@ -1,0 +1,22 @@
+; Double (3rd) for Solo Violin
+; from Partita No. 1 in D Minor, S. 1002
+; by J.S. Bach
+
+t165l8o4
+b>df+gedc+ag f+dc+d<af+d>dc+ <bgf+e>ed<f>c+<b a+>f+c+<a+gf+edc+
+df+bc+ba<b>ag <a>c+eg>c+e<a+>f+e d<bag>edc+<a+b f+a+>c+f+gf+edc+
+l8o4
+b>df+gedc+ag f+dc+d<af+d>dc+ <bgf+e>ed<f>c+<b a+>f+c+<a+gf+edc+
+df+bc+ba<b>ag <a>c+eg>c+e<a+>f+e d<bag>edc+<a+b >f+c+<a+l2f+.
+l8o4
+f+>c+a+a+c+<f+edc+ df+b>df+bag+f+ e<g+>dc+<a>f+d<b>g+ aec+<a>c+egf+e d+<a>>c<be<gf+>d+a
+c<aed+b>agd+e <a>gf+<bg>e<f+>ed+ e<bgegb>ef+g aedc+<bagf+e f+a>c+df+ef+<ad
+<g>db>c+bagef+ ec+<b>c+<ag+aeg a+>c+egf+edec+ d<b>c+df+ef+<af+ gb>f+ec+dc+<a+b
+a+>c+<ba+g+f+edc+ df+bba+>c+c+<b>d d<bg+eg+b>dg+b <eg>c+c+<b>ddc+e ec+<a+f+a+>c+ea+>c+
+<db<f+>c+a<eb>g<d c+ega+>c+egf+e a+bff+c+d<f+ba+ bf+d<b>df+b>c+d
+l8o4
+f+>c+a+a+c+<f+edc+ df+b>df+bag+f+ e<g+>dc+<a>f+d<b>g+ aec+<a>c+egf+e d+<a>>c<be<gf+>d+a
+c<aed+b>agd+e <a>gf+<bg>e<f+>ed+ e<bgegb>ef+g aedc+<bagf+e f+a>c+df+ef+<ad
+<g>db>c+bagef+ ec+<b>c+<ag+aeg a+>c+egf+edec+ d<b>c+df+ef+<af+ gb>f+ec+dc+<a+b
+a+>c+<ba+g+f+edc+ df+bba+>c+c+<b>d d<bg+eg+b>dg+b <eg>c+c+<b>ddc+e ec+<a+f+a+>c+ea+>c+
+<db<f+>c+a<eb>g<d c+ega+>c+egf+e a+bff+c+d<f+ba+ <b>df+b>df+l4b.

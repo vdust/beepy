@@ -1,0 +1,23 @@
+; Giga for Solo Violin
+; from Partita No. 2 in D Minor, S. 1004
+; by J.S. Bach
+
+t120o4
+l8a dfa>defel16gfedl8c+<ae c+ea>efgfl16agfel8d<af dl16>fedfb-agfedcdedceagfedc
+<b->cdc<b->dgfedc+<bab>c+<ba>c+edc+<bag fagfed<l8a>>dc+<d.l16efgab->cdef gec<geg>c<gecegagfgab->cdefga
+b-ab->d<egaga>c<dfgfgb-cefefagf edefedc<b->cdc<b-ab->cfc<afga>c<af dd+fb-fd<b->cdfd<b-gb->dgb->dgb-gd<b-g
+eg>cegb-c<b->cb-cb-<fa>cefac<b->caca <eg>cegb-c<b->cb-cb-<fa>cefac<b->caca <b->dfab->d<ede>d<e>d<<a>cega>c<dcd>c<d>c
+<<gb->dfgb-c<b->cb-cb-<fa>cefac<b->cafd <b-ab->cd<b-gfgab-gedefgeceg>cl8e.
+l16<b-agfedc+<ba>gefdfa>dc+d<a>dfba bfedc<bag+f+e>d<b>c<a>ceag+ab>c<g+a>c
+<fgaefadefc+dfl8<g+.l16ab>cdefdbd cdecac<b>cd<b>g+<b>cdecacdefdbd
+cde<b>c<ab>cd<abg+a<a>c+el8g.l16ec+<a>c+e fdfa>dc+d<a>dfag+t100at110et105c+t100<at95et90c+<l4a
+t120o5
+l8e<a>c+e<gab-c+l16edc+<bl8a>c+e l16gab-agb->edc+<bagfefgafl8d.l16>dc<b- a>c<b-agf+>e-dc<b-agf+agf+ed>agf+edc
+<b->dc<b-ag>>c<b-agf+edef+agfe-dc<b-ag f+a>df+a>c<dcd>c<d>c<<gb->df+gb-dcdb-db-
+<f+a>df+a>c<dcd>c<d>c<<gb->df+gb-dcdb-db-<ce-gb->ce-<fe-f>e-<f>e-<<b->dfab->d<e-de->d<e->d
+<<a>ce-ga>c<dcd>c<d>c<<gb->df+gb-df+gb->dg e-de-fge-c<b->cde-c<agab->c<af+a>df+a>c
+<b-a>c<b-agdgf+gaf+ge-dc<b-ab-gab->cd efge<b->e<cegb-agab->c<afa<b->dfafd
+>c+dec+<g>c+<<a>c+egfefdfa>dc+d<a>dfac <b->agfedcdefg<b-a>gfedc<b->cdef<a
+g>fedc+<bab>c+de<gfa>d<afadfafdf <b->f>dfec+<<a>f>dfec+<<g>f>dfedb-agfed
+c+efgaedc+<ba>e<gfgaf>d<fefge>c<e defdb-dcdecac<b->cd<b->gdgab-g>e-<g
+<ab>c+<a>g<a>gab-g>c+<gfgaf>d<a>defdbd <g+ab>c+defedc+d<g+a>c+defgab-efgc+ d<dfa>defdfa>dc+t100dt110<at105ft100dt95<at90ft85l4d

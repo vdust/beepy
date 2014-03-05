@@ -1,0 +1,38 @@
+; Chaconne for Solo Violin (sample)
+; from Partita No. 2 in D Minor
+; by J.S. Bach
+
+t50l32o4
+fd>a<dfd>a<dfd>a<dfd>a<dfd>a<dfd>a<d
+fd>g<dfd>g<dfd>g<dfd>g<de>c+gc+<e>c+gc+
+<dd>f<ddd>f<ddd>f<ddd>f<dda>f<ada>f<a
+<g>b->e<b-<g>a>f<a<g>g>e<g<g>f>d<f<a>e>d<e<a>e>c+<e
+df>d<fdf>d<f<a>f>d<f<a>f>d<f<b->f>d<f<b->f>d<f
+cf+>e-<f+cf+>e-<f+<b->f+>e-<f+<b->f+>e-<f+<a>f+>e-<f+<a>f+>e-<f+
+<b->g>d<g<b->g>d<g<a>f>d<f<a>f>d<f<g>e>d<e<g>e>d<e
+<a>f>d<f<a>f>d<f<a>e>d<e<a>e>d<e<a>g>c+<g<a>g>c+<g
+df>ddd<fdddfaaafdddfb-b-b-fdd
+df+>ccc<f+dddf+b-b-b-f+dddf+aaaf+dd
+dgb-b-b-gdde>c+b-b-b-c+<eef>daaad<ff
+g>dggfd<gga>deeed<aaa>c+eeec+<aa
+d>dfffd<ddda>fff<adddb->fff<b-dd
+d>cf+f+f+c<dddb->f+f+f+<b-ddda>f+f+f+<add
+db->ggg<b-ddda>fff<addc+a>eee<ac+c+
+da>fff<add<a>e>c+c+c+<e<aaa>e>c+c+c+<e<aa
+>df>d<fdf>d<fda>f<ada>f<ad>cfc<d>cfc
+<gb->f<b-gb->f<b-gb->e<b-gb->e<b-<a>f>e-<f<a>f>e-<f
+<b->f>e-<f<b->f>e-<f<b->>db-d<f>db-d<g>ded<g>ded
+<a>ded<a>ded<e>c+ac+<e>c+ac+<e>c+gc+<e>c+gc+
+o5<da>f<ada>f<ad>df+d<d>df+d<d>cf+c<d>cf+c
+<db->g<b-db->g<b-db>g+<bdb>g+<be>dg+d<e>dg+d
+<f>cac<f>cac<f+>e->c<e-<f+>e->c<e-<g>dbd<g>dbd
+<g+>f>d<f<g+>f>d<f<a>e>d<e<a>e>d<e<a>e>c+<e<a>e>c+<e
+t75l32o4
+d>f>dd<f<dd>f>dd<f<db->f>dd<f<b-b->f>dd<f<b-a>f>dd<f<aa>f>dd<f<a
+g+>e>dd<e<g+g+>e>dd<e<g+a>e>c+c+<e<aa>e>c+c+<e<ag>e>c+c+<e<gg>e>c+c+<e<g
+f+>d>cc<d<f+f+>d>cc<d<f+g>dbbd<gg>dbbd<gf>dbbd<ff>dbbd<f
+e>c+b-b-c+<ee>c+b-b-c+<ef>daad<ff>daad<fe>cggc<ee>cggc<e
+d>df+f+d<dd>df+f+d<d<a>a>dfd<aa>dffd<a<b>g>dfd<gg>dffd<g
+cg>cec<gg>ceec<g<gg>g>e-e-<g<gg>g>e-e-<g<ga>f>e-e-<f<aa>f>e-e-<f<a
+b->f>dd<f<b-b->f>dd<f<b-b->g>dd<g<b-b->g>dd<g<b-a>f>dd<f<aa>f>dd<f<a
+g+>e>dd<e<g+g+>e>dd<e<g+a>e>dd<e<aa>e>dd<e<aa>d>c+c+<e<aa>e>c+c+<e<a>l8d

@@ -1,0 +1,35 @@
+; Preludio for Solo Violin
+; from Partita No. 3 in E major, S. 1006
+; by J.S. Bach
+
+t130o6l16
+p8ed+l8el16<bp16g+p16l8b l16ef+ed+l8el16<bp16g+p16l8bl16 t100et130bf+bg+babg+bf+b t100et130>ed+c+<b>ed+c+<bag+f+ t100et130bf+bg+babg+bf+b
+t100et130>ed+c+<b>ed+c+<bag+f+ t100et130f+g+ab>c+d+ef+g+af+ g+bef+g+ab>c+d+ec+d+ t100et130<babg+babg+bf+b t100et130>ed+c+<be>c+<ebeae
+t100g+t130bf+bg+babg+bf+b t100et130>ed+c+<be>c+<ebeae t100g+t130eeed+eeef+ed+e t115et130eg+ef+eg+eaef+e t100g+t130eeed+eeef+ed+e
+t115et130eg+ef+eg+eaef+e t90g+t120et125g+t130eg+eg+eg+eg+e g+eg+d+g+eg+d+g+eg+d+ g+eg+dg+eg+dg+eg+d aeac+aeac+aeac+
+aea<b>aea<b>aea<b >g+eg+<b>g+eg+<b>g+eg+<b >g+eg+<a>g+eg+<a>g+eg+<a >f+ef+<a>f+ef+<a>f+ef+<a >f+ef+<g+>f+ef+<g+>f+ef+<g+
+>eee<g+>eee<g+>eee<g+ >eee<f+>eee<f+>eee<f+ >d+ed+<f+>d+ed+<f+>d+ed+<f+ t85et120f+t125et130f+g+bef+g+bef+ g+ag+ab>e<g+ab>e<g+a
+b>c+<b>c+dg+<b>c+dg+<b>c+ t90dt120bt125g+t130ed<bg+edc+d<b >c+d+c+d+fg+c+d+fg+c+d+ ff+ff+g+>c+<ff+g+>c+<ff+ g+ag+ab>f<g+ab>f<g+a
+t90bt130>g+fc+bg+af+fg+c+<b a>c+<af+>f+d+ec+cd+<g+f+ eg+ec+eg+>c+<g+>ec+g+c+ cd+c<g+>g+gg+gg+d+ec+ cd+c<g+>f+ff+ff+d+ec+
+cd+c<g+ag+ag+ad+ec+ cf+c+f+d+f+c+f+cf+d+f+ t80<g+t120>f+t125>d+t130<f+>c<f+>d+<f+>c<f+>d+<f+ <g+>e>c+<e>e<e>c+<e>e<e>c+<e <g+>f+>d+<f+>c<f+>d+<f+>c<f+>d+<f+
+<g+>e>c+<e>e<e>c+<e>e<e>c+<e <g+>g>c+<g>e<g>c+<g>e<g>c+<g <g+>g>c+<g>e<g>c+<g>e<g>c+<g <g+>g+>c+<g+>d+<g+>c+<g+>d+<g+>c+<g+ <g+>f+>c<f+>d+<f+>c<f+>d+<f+>c<f+
+t80c+t120>c+t125<bt130ag+>c+<g+f+eg+ed+ c+>c+<g+f+eg+ed+c+ec+<b t80a+>t120f+>t130c+<f+>e<f+>c+<f+>e<f+>c+<f+ <a+>f+>e<f+>c+<f+>e<f+>c+<f+>e<f+
+o4t80<bt120>>bt125a+t130g+f+bf+ed+f+d+c+
+o5<b>bf+ed+f+d+c+<b>d+<ba t100g+t120>dt130edg+dbdg+ded <g+>ded<g+>d<f+>d<g+>d<e>d c+eag+aedec+e<b>e <a>ag+f+e<a>f+<a>e<a>d<a
+>c+e<b>ec+edec+e<b>e<a>ag+f+e<a>f+<a>e<a>d<a> c+<aaag+aaabag+a aa>c+<aba>c+<a>d<aba >c+<aaag+aaabag+a
+aa>c+<aba>c+<a>d<aba t100>c+t120<at130>c+<a>c+<a>c+<a>c+<a>c+<a >c+<a>c+<g+>c+<a>c+<g+>c+<a>c+<g+ >c+<a>c+<g>c+<a>c+<g>c+<a>c+<g >d<a>d<f+>d<a>d<f+>d<a>d<f+
+>d<a>d<e>d<a>d<e>d<a>d<e >c+<a>c+<e>c+<a>c+<e>c+<a>c+<e >c+<a>c+<d>c+<a>c+<d>c+<a>c+<d babdbabdbabd
+babc+babc+babc+ aaac+aaac+aaac+aaa<b>aaa<b>aaa<b >g+ag+<b>g+ag+<b>g+ag+<b
+o3t80at118bt119at120bt121>c+t123et126<at128bt130>c+e<ab >c+dc+deac+deac+d ef+ef+g>c+<ef+g>c+<ef+ t90gt120>et125c+t130dec+<a+b>c+<a+f+e dc+<b>c+df+<b>c+df+<b>c+
+dedef+bdef+bde f+g+f+g+a>d+<f+g+a>d+<f+g+ a>f+d+ef+d+cc+d+c+<g+f+ f>bg+abg+ff+g+fc+<b a>>c+<ab>c+<af+g+af+dc+
+<b>>d<b>c+d<bg+abg+fg+ c+d+c+d+fg+c+d+fg+c+d+ ff+ff+g+bff+g+bff+ g+ag+ab>d<g+ab>d<g+a b>d<bg+fbg+fc+bag+
+f+g+af+<b>ag+f+c+g+f+fdef+d<g+>f+ed<a+>edc+ <b>c+d<b f>dc+<bf+>c+<ba g+abag+babg+bf+b ff+g+abf>d<f>c+<fbf
+f+af+c+<a>c+f+c+ac+f+c+ fg+fc+fg+>c+<g+>fc+g+<b a>c+<af+a>c+f+c+af+>c+<f+ fg+fc+>c+cc+cc+<g+af+ fg+fc+ba+ba+bg+af+
+fg+fc+dc+dc+d<g+af+ t110ft120g+t130>c+bbg+af+fg+c+<b a>c+f+>c+c+<abg+f+adc+ <b>d<gf+fg+c+<ba>c+f+g+ af+bf+>c+<f+>d<f+c+f+g+f
+t80f+t85at90g+t95at100at110at120g+t125at130f+aea d+aeaf+ag+aaaf+a g+ag+f+t80et110>et115d+t120et125c+t127et128<bt130>e <a+>e<b>ec+ed+eeec+e d+ed+c+<b>c+d+ef+g+af+
+o5t80bt90<bt100at105bt110g+t115bt120f+t125bt130ebdb c+ef+g+ab>c+def+g+e t90at110<at115g+t120at125f+t130aead+ac+a <b>d+ef+g+ab>c+d+ef+d+ t80g+t105<et115dt120et125c+t130e<b>e<a>e<g+>e
+t110<at120>et130>c+<b>c+eag+af+c+e t105<<bt115>f+t125>d+t130c+d+f+ag+af+d+f+ t110<<bt125>g+t130bab>eg+f+g+e<b>e t95<<bt108>a+t121>c+t130<b>c+ea+g+a+ec+e d+ba+g+f+bf+ed+f+d+c+
+<b>bag+f+af+ed+f+d+c+ <b>ag+f+eg+ed+c+ec+<b a>g+f+ed+f+d+c+<b>d+<ba g+>ec+<ba>c+<ag+f+af+e d+f+a>c+<b>d+f+g+ag+af+
+o5g+eg+bt100>et120<bt130g+et120<bt115>f+t110>et110d+ t60et80<bt90g+t100et110dt115et120c+t125et130de<b>e c+eaec+e<b>ec+e<a>e <b>eg+e<b>e<a>e<b>e<g+>e <a>ef+et115d+et105eet100f+et95g+t80e
+l32<<b>f+>t95l16d+t80l4al8bl32<eb>l8g+. l16t70<<at80>>at90g+t80at75f+t70l32<bt75>f+t80<b>t85f+g+f+g+f+g+f+g+f+g+t70f+l8e l16t90et105>et110d+t115c+t120<bt125>et130<a>e<g+>e<f+>e <eed+c+<b>e<a>e<g+>e<f+>e
+t120<et115g+t110bt105>d+t100et95g+t90bt50>d+l8ep8
