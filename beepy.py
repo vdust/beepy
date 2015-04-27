@@ -21,6 +21,10 @@
 # FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 # IN THE SOFTWARE.
 
+import struct
+import math
+TWO_PI = 2 * math.pi
+
 class BeepyParseError(Exception):
   pass
 
@@ -239,6 +243,79 @@ class EvdevOutput(OutputBase):
       if p:
         time.sleep(p)
     os.close(fd)
+
+
+@output('pcm')
+class PCMOutput(OutputBase):
+  """ Generate raw PCM data. """
+  __optgroupname__ = "PCM Output Options"
+  __options__ = (
+      ( ('--pcm-samplerate',),
+        dict(
+          dest="pcm_sr", type=int, default=48000,
+          help="Sample rate of raw data sent to sox"
+        )
+      ),
+      ( ('--pcm-output',),
+        dict(
+          dest="pcm_out", default="-",
+          help="Target file for pcm output (defaults to standard output)"
+        )
+      ),
+    )
+
+  def __init__(self, options, output=None):
+    super(PCMOutput, self).__init__(options)
+    self.samplerate = self.options.pcm_sr
+    self.output = output
+    self.rundata = []
+
+  def clear(self):
+    self.rundata = []
+  def square(self, out, frequency, length, ampl = 2**12):
+    sr = self.samplerate
+    samples = math.ceil(sr * length)
+    x = 0.0
+    while x < samples:
+      y = math.sin(TWO_PI * frequency * (x / sr))
+      out.write(struct.pack('<h', ampl * (y >= 0 and 1 or -1)))
+      x += 1.0
+  def silence(self, out, length):
+    sr = self.samplerate
+    samples = math.floor(self.samplerate * length)
+    x = 0.0
+    while x < samples:
+      out.write(struct.pack('<h', 0))
+      x += 1.0
+  def pushnote(self, notedata):
+    f = notedata.get('frequency')
+    l = notedata.get('length')
+    D = notedata.get('pause')
+    if ( f is not None and l is not None ) or D is not None:
+      if f and l:
+        self.rundata.append((self.square, (f, l/1000.0)))
+      if D is not None:
+        self.rundata.append((self.silence, (D/1000.0,)))
+  def run(self):
+    output = self.options.pcm_out if self.output is None else self.output
+    if isinstance(output, str):
+      if output == '-':
+        # We need to write binary data to stdout:
+        # - python3: sys.stdout.buffer
+        # - python2: sys.stdout
+        output = getattr(sys.stdout, 'buffer', sys.stdout)
+        outclose = False
+      else:
+        output = open(output, 'wb')
+        outclose = True
+    else:
+      outclose = False
+
+    for gen, args in self.rundata:
+      gen(output, *args)
+
+    if outclose:
+      output.close()
 
 
 

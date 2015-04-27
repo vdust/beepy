@@ -9,9 +9,13 @@ quickly.
 The first version was a simple 'beep' command generator. The 'evdev' output
 was implemented to avoid the generation of very long commandlines.
 
-Right now, you need a PC speaker on your computer to use it.
-Contributions for new output methods are welcome. (note: a sox-based output
-method is already planned)
+The 'pcm' output is now available. It writes raw 48000Hz signed 16bits pcm
+data to standard output (or a file with the --pcm-output option).
+To play it using sox:
+
+    ./beepy -o pcm file.txt | play -t raw -r 48000 -b 16 -e signed-integer -
+
+The sample rate is also configurable using the option --pcm-samplerate
 
 
 
