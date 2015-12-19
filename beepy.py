@@ -28,12 +28,16 @@ TWO_PI = 2 * math.pi
 class BeepyParseError(Exception):
   pass
 
-class OutputBase(object):
-  __outputs__ = dict()
+class OptionableMeta(type):
+  def __new__(cls, name, bases, cdict):
+    t = type.__new__(cls, name, bases, cdict)
+    if name != 'Optionable' and getattr(t, '__optionables__', None) is None:
+      t.__optionables__ = dict()
+    return t
 
+class Optionable(object, metaclass=OptionableMeta):
   __optgroupname__ = None
   __optgroupdesc__ = None
-
   # Tuple of options in the form:
   # ( ((args, ...), dict(kwargs=...)), ... )
   # each pair of 'args', 'kwargs' is passed as is to the optparse add_option()
@@ -42,20 +46,29 @@ class OutputBase(object):
   __options__ = None
 
   @classmethod
-  def getOutput(cls, name):
-    return cls.__outputs__.get(name, None)
-  @classmethod
-  def listOutputs(cls):
-    a = list(cls.__outputs__.keys())
-    a.sort()
-    return a
-  @classmethod
-  def setupOptionsAll(cls, parser):
-    for o in cls.listOutputs():
-      cls.__outputs__[o].setupOptions(parser)
+  def register(cls, name):
+    def _optionable(_cls):
+      cls.__optionables__[name] = _cls
+      return _cls
+    return _optionable
 
   @classmethod
-  def setupOptions(cls, parser):
+  def getClass(cls, name):
+    return cls.__optionables__.get(name, None)
+
+  @classmethod
+  def listAll(cls):
+    a = list(cls.__optionables__.keys())
+    a.sort()
+    return a
+
+  @classmethod
+  def setupOptionsAll(cls, argparser):
+    for o in cls.listAll():
+      cls.__optionables__[o].setupOptions(argparser)
+
+  @classmethod
+  def setupOptions(cls, argparser):
     if not cls.__options__:
       return
 
@@ -64,13 +77,15 @@ class OutputBase(object):
       groupname = "%s options" % cls.__name__
 
     from optparse import OptionGroup
-    group = OptionGroup(parser, groupname, cls.__optgroupdesc__)
+    group = OptionGroup(argparser, groupname, cls.__optgroupdesc__)
     for args, kwargs in cls.__options__:
       group.add_option(*args, **kwargs)
-    parser.add_option_group(group)
+    argparser.add_option_group(group)
 
+
+class Output(Optionable):
   def __init__(self, options):
-    if self.__class__ is OutputBase:
+    if self.__class__ is Output:
       raise NotImplementedError("Abstract class: Must be subclassed.")
     self.options = options
 
@@ -93,15 +108,34 @@ class OutputBase(object):
   def postrun(self):
     pass
 
-def output(name):
-  def _output(cls):
-    OutputBase.__outputs__[name] = cls
-    return cls
-  return _output
+
+class Parser(Optionable):
+  def __init__(self, options):
+    if self.__class__ is Parser:
+      raise NotImplementedError("Abstract class: Must be subclassed.")
+    self.options = options
+    self.reset()
+
+  def reset(self):
+    self.output_notes = []
+    self.cnote = {}
+    return self.cnote
+
+  def flushnote(self):
+    self.output_notes.append(self.cnote)
+    self.cnote = {}
+    return self.cnote
+
+  def parse(self, data):
+    raise NotImplementedError()
+
+  def feed(self, output):
+    for n in self.output_notes:
+      output.pushnote(n)
 
 
-@output('dummy')
-class DummyOutput(OutputBase):
+@Output.register('dummy')
+class DummyOutput(Output):
   """ Dummy output for debug """
   def __init__(self, options):
     super(DummyOutput, self).__init__(options)
@@ -119,8 +153,8 @@ class DummyOutput(OutputBase):
       sys.stderr.write("\n".join(self.debuginfo)+"\n")
 
 
-@output('beep')
-class BeepOutput(OutputBase):
+@Output.register('beep')
+class BeepOutput(Output):
   """ Generate a 'beep' command and run it. """
   __optgroupname__ = "Beep Output Options"
   __options__ = (
@@ -170,8 +204,8 @@ class BeepOutput(OutputBase):
     self.runcommand(self.options.beepapp, *self.beepargs)
 
 
-@output('evdev')
-class EvdevOutput(OutputBase):
+@Output.register('evdev')
+class EvdevOutput(Output):
   """ Write directly to the speaker's input device. """
   __optgroupname__ = "Evdev Output Options"
   __options__ = (
@@ -245,8 +279,8 @@ class EvdevOutput(OutputBase):
     os.close(fd)
 
 
-@output('pcm')
-class PCMOutput(OutputBase):
+@Output.register('pcm')
+class PCMOutput(Output):
   """ Generate raw PCM data. """
   __optgroupname__ = "PCM Output Options"
   __options__ = (
@@ -319,16 +353,11 @@ class PCMOutput(OutputBase):
 
 
 
-class Beepy(object):
-  """ A class to convert QuickBasic music to the provided output """
+@Parser.register('qb')
+class QBParser(Parser):
+  "Parse Quick Basic PLAY data"
   def __init__(self, options):
-    self.options = options
-
-    outputCls = OutputBase.getOutput(options.output)
-    if outputCls is None:
-      raise RuntimeError("Unknown output %r"%options.output)
-
-    self.output = outputCls(options)
+    super(QBParser, self).__init__(options)
 
     # Init diatonic scale offsets
     scale = dict(
@@ -353,11 +382,14 @@ class Beepy(object):
       notes.append(440.0 * coeff ** float(a - 57))
     self.notes = notes
 
+  def reset(self):
     # Defaults (same as QuickBasic)
     self.octave = 4
     self.tempo = 120.0
     self.note_type = 4
     self.note_duration = 7.0 / 8.0
+
+    return super(QBParser, self).reset()
 
   def get_durations(self, dots):
     """ Get the duration in milliseconds, of the note and the post delay. """
@@ -372,16 +404,12 @@ class Beepy(object):
     return (duration * l, max(0.0, (1.0 - duration) * l))
 
   def parse(self, data):
-    cnote={}
+    cnote = self.reset()
 
-    def flushnote():
-      self.output.pushnote(cnote)
-      cnote.clear()
-
-    data = data.lower() + " " # To handle effortlessly EOF.
-    c=0 # Current position
-    n=1 # Current line
-    loffset=-1 # offset, in characters, of the current line.
+    data = data.lower() + " " # to handle EOF effortlessly.
+    c = 0 # current position
+    n = 1 # current line
+    loffset = -1 # ofset, in characters, in the current line
 
     def loc():
       return "(line %d, column %d)" % (n, c - loffset)
@@ -402,7 +430,7 @@ class Beepy(object):
           loffset = c - 1
           n += 1
           continue
-        if x in "m":
+        if x == "m":
           x = data[c]
           c += 1
           if x == "s":
@@ -411,7 +439,7 @@ class Beepy(object):
             self.note_duration = 7.0/8.0
           elif x == "l":
             self.note_duration = 1.0
-          elif x == "f" or x == "b":
+          elif x in "fb":
             continue
           else:
             err("Unknown character sequence '%s'" % ('m'+x))
@@ -430,18 +458,18 @@ class Beepy(object):
           elif x == "t":
             self.tempo = float(min(255, max(32, v)))
           elif x == "p":
-            dots=0
+            dots = 0
             while data[c] == ".":
               dots += 1
               c += 1
-            d, p = self.get_durations(dots)
+            d, p = self.get_duration(dots)
             cnote['pause'] = cnote.get('pause', 0.0) + d + p
         elif x == ">":
           self.octave = min(8, self.octave + 1)
         elif x == "<":
           self.octave = max(0, self.octave - 1)
         elif x in "abcdefg":
-          flushnote()
+          cnote = self.flushnote()
           cnote['symbolic'] = "%s%d" % (x, self.octave)
           if data[c] in "#+-":
             alt = data[c]
@@ -450,7 +478,7 @@ class Beepy(object):
             x += alt
             cnote['symbolic'] += alt
             c += 1
-          dots=0
+          dots = 0
           while data[c] == ".":
             dots += 1
             c += 1
@@ -463,10 +491,32 @@ class Beepy(object):
           err("Unknown character '%s'" % x)
     except IndexError:
       pass
-    flushnote()
+    self.flushnote()
+
+
+class Beepy(object):
+  """ A class to convert QuickBasic music to the provided output """
+  def __init__(self, options):
+    self.options = options
+
+    outputCls = Output.getClass(options.output)
+    if outputCls is None:
+      raise RuntimeError("Unknown output %r" % options.output)
+
+    parserCls = Parser.getClass(options.parser)
+    if parserCls is None:
+      raise RuntimeError("Unknown parser %r" % options.parser)
+
+    self.output = outputCls(options)
+    self.parser = parserCls(options)
 
   def clear(self):
     self.output.clear()
+    self.parser.reset()
+
+  def parse(self, data):
+    self.parser.parse(data)
+    self.parser.feed(self.output)
 
   def run(self, inputdata=None):
     if inputdata:
@@ -482,26 +532,36 @@ if __name__ == '__main__':
   import sys
   from optparse import OptionParser
 
-  parser = OptionParser(usage="%prog [options] files...")
-  parser.add_option('--encoding', dest="encoding", default="UTF-8",
+  oparser = OptionParser(usage="%prog [options] files...")
+  oparser.add_option('--encoding', dest="encoding", default="UTF-8",
       help="Define the encoding charset of the inputs. All input files must be in the same encoding. Ignored on stdin. [default: UTF-8]")
-  parser.add_option('-o', '--output', dest="output", default="evdev",
+  oparser.add_option('-o', '--output', dest="output", default="evdev",
       help="Select the output method. Use --output=list to list available outputs and exit. [default: beep]")
-  parser.add_option('-R', '--no-run', action="store_false", dest="dorun", default=True,
+  oparser.add_option('-p', '--parser', dest="parser", default="qb",
+      help="Select the parser method. Use --output=list to list available outputs and exit. [default: qb]")
+  oparser.add_option('-R', '--no-run', action="store_false", dest="dorun", default=True,
       help="Don't run the generated command.")
-  parser.add_option('--debug', action="store_true", dest="debug", default=False,
+  oparser.add_option('--debug', action="store_true", dest="debug", default=False,
       help="Run in debug mode.")
-  OutputBase.setupOptionsAll(parser)
+  Output.setupOptionsAll(oparser)
+  Parser.setupOptionsAll(oparser)
 
-  options, args = parser.parse_args()
+  options, args = oparser.parse_args()
+
+  def printOptionables(kindCls, kindName, default):
+    print("Available %ss:" % kindName)
+    print("\n".join([
+      "    %s: %s%s" % (n, (kindCls.getClass(n).__doc__ or n).strip(), n == default and " [default]" or "")
+      for n in kindCls.listAll()
+      ]))
 
   if options.output == 'list':
-    print("Available outputs:")
-    print("\n".join([
-      "    %s: %s%s" % (n, OutputBase.getOutput(n).__doc__.strip(), n == 'evdev' and " [default]" or "")
-      for n in OutputBase.listOutputs()
-      ]))
+    printOptionables(Output, 'output', 'evdev')
+  if options.parser == 'list':
+    printOptionables(Parser, 'parser', 'qb')
+  if options.output == 'list' or options.parser == 'list':
     raise SystemExit(0)
+
 
   if not args:
     args = ['-']
