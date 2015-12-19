@@ -23,6 +23,7 @@
 
 import struct
 import math
+import sys
 TWO_PI = 2 * math.pi
 
 class BeepyParseError(Exception):
@@ -31,11 +32,17 @@ class BeepyParseError(Exception):
 class OptionableMeta(type):
   def __new__(cls, name, bases, cdict):
     t = type.__new__(cls, name, bases, cdict)
-    if name != 'Optionable' and getattr(t, '__optionables__', None) is None:
+    if name not in ('Optionable', 'OptionableBase') and getattr(t, '__optionables__', None) is None:
       t.__optionables__ = dict()
     return t
 
-class Optionable(object, metaclass=OptionableMeta):
+if sys.version_info >= (3,):
+  exec("class OptionableBase(object, metaclass=OptionableMeta): pass")
+else:
+  class OptionableBase(object):
+    __metaclass__ = OptionableMeta
+
+class Optionable(OptionableBase):
   __optgroupname__ = None
   __optgroupdesc__ = None
   # Tuple of options in the form:
