@@ -32,17 +32,21 @@ class BeepyParseError(Exception):
 class OptionableMeta(type):
   def __new__(cls, name, bases, cdict):
     t = type.__new__(cls, name, bases, cdict)
-    if name not in ('Optionable', 'OptionableBase') and getattr(t, '__optionables__', None) is None:
+    if name not in ('Optionable', '_OptionableBase') and getattr(t, '__optionables__', None) is None:
       t.__optionables__ = dict()
+    t.__optionableabst__ = cdict.get('__optionableabst__', False)
     return t
 
 if sys.version_info >= (3,):
-  exec("class OptionableBase(object, metaclass=OptionableMeta): pass")
+  exec("class _OptionableBase(object, metaclass=OptionableMeta): __optionableabst__ = True")
 else:
-  class OptionableBase(object):
+  class _OptionableBase(object):
     __metaclass__ = OptionableMeta
+    __optionableabst__ = True
 
-class Optionable(OptionableBase):
+class Optionable(_OptionableBase):
+  __optionableabst__ = True
+
   __optgroupname__ = None
   __optgroupdesc__ = None
   # Tuple of options in the form:
@@ -89,12 +93,17 @@ class Optionable(OptionableBase):
       group.add_option(*args, **kwargs)
     argparser.add_option_group(group)
 
-
-class Output(Optionable):
   def __init__(self, options):
-    if self.__class__ is Output:
+    if self.__optionableabst__:
       raise NotImplementedError("Abstract class: Must be subclassed.")
     self.options = options
+
+
+class Output(Optionable):
+  __optionableabst__ = True
+
+  def __init__(self, options):
+    super(Output, self).__init__(options)
 
   def clear(self):
     pass
@@ -117,10 +126,10 @@ class Output(Optionable):
 
 
 class Parser(Optionable):
+  __optionableabst__ = True
+
   def __init__(self, options):
-    if self.__class__ is Parser:
-      raise NotImplementedError("Abstract class: Must be subclassed.")
-    self.options = options
+    super(Parser, self).__init__(options)
     self.reset()
 
   def reset(self):
