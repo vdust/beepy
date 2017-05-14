@@ -138,8 +138,9 @@ class Parser(Optionable):
     return self.cnote
 
   def flushnote(self):
-    self.output_notes.append(self.cnote)
-    self.cnote = {}
+    if self.cnote:
+      self.output_notes.append(self.cnote)
+      self.cnote = {}
     return self.cnote
 
   def parse(self, data):
@@ -509,6 +510,77 @@ class QBParser(Parser):
       pass
     self.flushnote()
 
+
+@Parser.register('book')
+class BookParser(Parser):
+  "Parse any text (latin alphabet)"
+  def __init__(self, options):
+    super(BookParser, self).__init__(options)
+
+    scale = dict()
+    i = 0
+    for n in "abcdefghijklmnopqrstuvwxyz":
+      scale[n] = i
+      i += 1
+
+    coeff=2.0 ** (1.0/12)
+    notes = []
+    for a in range(len(scale)):
+      notes.append(440.0 * coeff ** float(a - 9))
+    self.notes = notes
+
+    for n in "9876543210":
+      i -= 2
+      scale[n] = i
+
+    self.scale = scale
+
+  def reset(self):
+    self.tempo = 140.0
+    self.note_type = 16
+    self.note_duration = 7.0 / 8.0
+
+    return super(BookParser, self).reset()
+
+  def get_duration(self, dots=0):
+    """ Get the duration in milliseconds, of the note and the post delay. """
+    l = 4.0 * 60000.0 / (self.tempo * self.note_type)
+    # each dot add half the duration of the previously added duration.
+    ne = l / 2.0
+    for i in range(dots):
+      l += ne
+      ne = ne / 2.0
+    duration = self.note_duration
+    return (duration * l, max(0.0, (1.0 - duration) * l))
+
+  def parse(self, data):
+    cnote = self.reset()
+
+    data = data.lower() + " " # to handle EOF effortlessly.
+    # Convert all special characters to spaces
+    import re
+    data = re.sub('[^a-z0-9 ]+', ' ', data)
+
+    c = 0 # current position
+    try:
+      while True:
+        x = data[c]
+        c += 1
+        if x in self.scale:
+          cnote = self.flushnote()
+          d, p = self.get_duration()
+          cnote['frequency'] = self.notes[self.scale[x]]
+          cnote['length'] = d
+          if p > 0.0:
+            cnote['pause'] = p
+        elif x in " \t\r\n":
+          while data[c] in " \t\r\n":
+            c += 1
+          d, p = self.get_duration()
+          cnote['pause'] = cnote.get('pause', 0) + d + p
+    except IndexError:
+      pass
+    self.flushnote()
 
 class Beepy(object):
   """ A class to convert QuickBasic music to the provided output """
