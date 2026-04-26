@@ -479,7 +479,7 @@ class QBParser(Parser):
             while data[c] == ".":
               dots += 1
               c += 1
-            d, p = self.get_duration(dots)
+            d, p = self.get_durations(dots)
             cnote['pause'] = cnote.get('pause', 0.0) + d + p
         elif x == ">":
           self.octave = min(8, self.octave + 1)
